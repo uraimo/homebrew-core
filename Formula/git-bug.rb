@@ -24,5 +24,19 @@ class GitBug < Formula
     assert_includes shell_output("git bug push origin 2>&1", 1), "Error: git-bug must be run from within a git repo"
     # Pull issues from a remote from outside a repository
     assert_includes shell_output("git bug pull origin 2>&1", 1), "Error: git-bug must be run from within a git repo"
-  end
+    
+    mkdir testpath/"git-repo" do
+      system "git", "init"
+      system "yes", "a b http://none/ | git bug user create"
+      system "git", "bug", "add", "-t", "Issue 1", "-m", "Issue body"
+      system "git", "bug", "add", "-t", "Issue 2", "-m", "Issue body"
+      system "git", "bug", "add", "-t", "Issue 3", "-m", "Issue body"
+      system "git", "bug", "ls", ">", "output.txt"
+    end
+    
+    assert_predicate testpath/"git-repo/output.txt", :exist?
+    assert_includes "Issue 1", (testpath/"git-repo/output.txt").read
+    assert_includes "Issue 2", (testpath/"git-repo/output.txt").read
+    assert_includes "Issue 3", (testpath/"git-repo/output.txt").read  
+end
 end
