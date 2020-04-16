@@ -32,7 +32,7 @@ class GitBug < Formula
       output = shell_output("git bug add -t \"Issue 1\" -m \"Issue body\"")
       output = shell_output("git bug add -t \"Issue 2\" -m \"Issue body\"")
       output = shell_output("git bug add -t \"Issue 3\" -m \"Issue body\"")
-      assert_includes "Issue 2", shell_output("git bug ls")
+      assert_includes shell_output("git bug ls"), "Issue 2"
     end
   end
 end
