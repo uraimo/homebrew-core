@@ -27,6 +27,7 @@ class GitBug < Formula
     
     mkdir testpath/"git-repo" do
       output = shell_output("git init")
+      output = shell_output("git config user.name homebrew;git config user.email a@a.com")
       output = shell_output("yes a b http://none/ | git bug user create")
       output = shell_output("git bug add -t \"Issue 1\" -m \"Issue body\"")
       output = shell_output("git bug add -t \"Issue 2\" -m \"Issue body\"")
