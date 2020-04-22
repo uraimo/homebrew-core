@@ -16,7 +16,7 @@ class GitBug < Formula
     assert_includes shell_output("#{bin}/git-bug --version"), "git-bug version"
     # Version through git
     assert_includes shell_output("git bug --version"), "git-bug version"
-    
+
     output = ""
     mkdir testpath/"git-repo" do
       shell_output("git init")
@@ -27,7 +27,7 @@ class GitBug < Formula
       shell_output("git bug add -t \"Issue 3\" -m \"Issue body\"")
       output = shell_output("git bug ls")
     end
-    
+
     assert_includes output, "Issue 2"
   end
 end
