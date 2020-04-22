@@ -17,6 +17,7 @@ class GitBug < Formula
     # Version through git
     assert_includes shell_output("git bug --version"), "git-bug version"
     
+    output = ""
     mkdir testpath/"git-repo" do
       shell_output("git init")
       shell_output("git config user.name homebrew;git config user.email a@a.com")
