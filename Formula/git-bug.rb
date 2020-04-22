@@ -22,7 +22,7 @@ class GitBug < Formula
       system "git", "init"
       system "git", "config", "user.name", "homebrew"
       system "git", "config", "user.email", "a@a.com"
-      system "yes \"a b http://www/www\" '' | git bug user create"
+      system "yes", "\"a b http://www/www\" '' | git bug user create"
       system "git", "bug", "add", "-t", "\"Issue 1\"", "-m", "\"Issue body\""
       system "git", "bug", "add", "-t", "\"Issue 2\"", "-m", "\"Issue body\""
       system "git", "bug", "add", "-t", "\"Issue 3\"", "-m", "\"Issue body\""
