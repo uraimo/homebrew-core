@@ -16,14 +16,6 @@ class GitBug < Formula
     assert_includes shell_output("#{bin}/git-bug --version"), "git-bug version"
     # Version through git
     assert_includes shell_output("git bug --version"), "git-bug version"
-    # List issues outside a repository
-    assert_includes shell_output("git bug ls 2>&1", 1), "Error: git-bug must be run from within a git repo"
-    # Add issue outside a repository
-    assert_includes shell_output("git bug add 2>&1", 1), "Error: git-bug must be run from within a git repo"
-    # Push issues to a remote from outside a repository
-    assert_includes shell_output("git bug push origin 2>&1", 1), "Error: git-bug must be run from within a git repo"
-    # Pull issues from a remote from outside a repository
-    assert_includes shell_output("git bug pull origin 2>&1", 1), "Error: git-bug must be run from within a git repo"
     
     mkdir testpath/"git-repo" do
       output = shell_output("git init")
