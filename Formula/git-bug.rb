@@ -18,12 +18,12 @@ class GitBug < Formula
     assert_includes shell_output("git bug --version"), "git-bug version"
     
     mkdir testpath/"git-repo" do
-      output = shell_output("git init")
-      output = shell_output("git config user.name homebrew;git config user.email a@a.com")
-      output = shell_output("yes \"a b http://www/www\" | git bug user create")
-      output = shell_output("git bug add -t \"Issue 1\" -m \"Issue body\"")
-      output = shell_output("git bug add -t \"Issue 2\" -m \"Issue body\"")
-      output = shell_output("git bug add -t \"Issue 3\" -m \"Issue body\"")
+      shell_output("git init")
+      shell_output("git config user.name homebrew;git config user.email a@a.com")
+      shell_output("yes \"a b http://www/www\" | git bug user create")
+      shell_output("git bug add -t \"Issue 1\" -m \"Issue body\"")
+      shell_output("git bug add -t \"Issue 2\" -m \"Issue body\"")
+      shell_output("git bug add -t \"Issue 3\" -m \"Issue body\"")
       output = shell_output("git bug ls")
     end
     
